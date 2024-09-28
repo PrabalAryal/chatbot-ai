@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <title>Interactive chatbot</title>
+   <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #faebd7 ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  width: 100vw;
+  height: 100vh;
+}
+
+.heading {
+  text-align: center;
+  color: black;
+  text-decoration: underline;
+  font-family: Papyrus, fantasy;
+}
+
+.chatbot_container {
+  width: 55%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#chatbot {
+  color: black;
+  width: 100%;
+  height: 60%;
+  padding: 16px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 16px;
+  overflow: auto;
+}
+
+.bot-text {
+  font-size: 20px;
+  text-align: left;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+  
+}
+
+#user-input {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#text-input {
+  width: 90%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 50px;
+}
+
+#button-input {
+  color: white;
+  font-weight: bold;
+  width: 10%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 50px;
+  background-color: #111111;
+}
+.userMessage {
+  font-size: 20px;
+  text-align: right;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+      }
+      
+   </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1 class="heading"> CHATBOT </h1>
+    <div class="chatbot_container">
+        <div id="chatbot"> 
+            <p class="bot-text"><span>Hi-there</span></p> 
+          
+          </div>
+            <div id="user-input"><input type="text" id="text-input" name="userMessage" placeholder="Questions here.....">
+            <input type="button" id="button-input" value="Send"></div>
+        </div>
+    </div>
+    <script>
+      function usermessage(){
+        var userMessage=$("#text-input").val();
+        var displaymessage="<p class='userMessage'>Me : <span>"+userMessage+"</span></p>";
+        $('#text-input').val('');
+        $('#chatbot').append(displaymessage);
+        $.get("/get_response", { usertext: userMessage }).done(function (data) {
+          var returnedmessage =
+            "<p class='bot-text'>Bot : <span>" + data + "</span></p>";
+          $("#chatbot").append(returnedmessage);
+        });
+      }
+
+      $('#button-input').click(function(){
+        usermessage();
+      });
+    </script>
+    </body>
+</html>
