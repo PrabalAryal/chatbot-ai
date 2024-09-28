@@ -5,7 +5,7 @@ from google.cloud import dialogflow
 from django.conf import settings
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join(
-    settings.BASE_DIR, r"E:\donloads\faq-cvba-c8c20ac74326.json"
+    settings.BASE_DIR, r"E:\exam\faq-cvba-c8c20ac74326.json"
 )
 
 

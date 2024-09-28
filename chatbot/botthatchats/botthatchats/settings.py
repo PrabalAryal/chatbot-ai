@@ -15,9 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-DIALOGFLOW_CREDENTIALS = os.path.join(
-    BASE_DIR, r"E:\donloads\faq-cvba-c8c20ac74326.json"
-)
+DIALOGFLOW_CREDENTIALS = os.path.join(BASE_DIR, r"E:\exam\faq-cvba-c8c20ac74326.json")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
